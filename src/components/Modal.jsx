@@ -16,7 +16,7 @@ function Modal({ handleOppen }) {
                 <div className="flex justify-between items-center mb-4 border-b pb-4">
                   <div className="flex gap-3">
                     <img
-                      className="w-20 rounded-xl"
+                      className="w-16 rounded-xl"
                       src={order.image.thumbnail}
                       alt=""
                     />
