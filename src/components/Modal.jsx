@@ -5,7 +5,7 @@ function Modal({ handleOppen }) {
   const { ordered, priceTotal } = useSelector((state) => state.orders);
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-      <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full mx-4">
+      <div className="bg-white py-6 px-2 rounded-lg shadow-lg max-w-sm w-full mx-4">
         <IoMdCheckmarkCircleOutline className="text-[#1EA575] w-12 h-12 mb-6" />
         <h1 className="font-bold text-3xl">Order Confirmed</h1>
         <p className="opacity-70 mb-8">We hope you enjoy your food!</p>
