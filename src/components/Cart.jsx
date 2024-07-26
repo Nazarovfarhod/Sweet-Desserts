@@ -3,6 +3,8 @@ import { useState } from "react";
 //redux imports
 import { useSelector, useDispatch } from "react-redux";
 import { deleteOrder } from "../features/dessertSlise";
+//images
+import CartBg from "../../public/assets/images/illustration-empty-cart.svg";
 
 //react icons
 import { TiDeleteOutline } from "react-icons/ti";
@@ -28,6 +30,12 @@ const Cart = () => {
     <div className="bg-white relative rounded-2xl lg:w-1/3 p-6">
       <h1 className="text-4xl w-full mb-5 text-[#C73B0F] font-bold">
         Your Cart ({orderTotal})
+        {!orderTotal && (
+          <div className="flex flex-col justify-center items-center">
+            <img className="w-48 " src={CartBg} alt="" />
+            <p className="text-[15px]">Your added items will appear here</p>
+          </div>
+        )}
       </h1>
       {ordered?.map((order) => {
         return (
