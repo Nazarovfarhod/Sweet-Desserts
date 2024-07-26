@@ -26,7 +26,7 @@ function Card({ dessert }) {
           src={dessert.image.mobile}
           className="h-56 w-full rounded-md object-cover"
         />
-        <div className=" hover:shadow-md active:shadow-none  bottom-[-25px] left-20 py-3 px-7 rounded-[25px] bg-white border border-[#AD8A85] absolute">
+        <div className=" hover:shadow-md active:shadow-none  bottom-[-25px] left-20  rounded-[25px] bg-white border border-[#AD8A85] absolute">
           {!addButtons && (
             <button
               onClick={() => {
@@ -34,22 +34,23 @@ function Card({ dessert }) {
                 dispatch(incrementOrder(dessert.id));
               }}
               type="button"
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 py-3 px-7"
             >
               <span>
                 <MdOutlineAddShoppingCart />
               </span>
               <h2>Add to Cart</h2>
             </button>
-          )}
+          )
+        }
           {addButtons && (
-            <div className="flex gap-3 items-center justify-center">
+            <div className="flex gap-3 py-3 px-7 rounded-[25px] duration-300 bg-[#C73B0F] items-center justify-center">
               <button onClick={() => dispatch(incrementOrder(dessert.id))}>
-                <AiFillPlusCircle className="w-6 h-6" />
+                <AiFillPlusCircle className="w-6 h-6 text-white" />
               </button>
-              <span>{dessert.amount} </span>
+              <span className="text-white">{dessert.amount} </span>
               <button onClick={() => dispatch(decrementOrder(dessert.id))}>
-                <AiFillMinusCircle className="w-6 h-6" />
+                <AiFillMinusCircle className="w-6 h-6 text-white" />
               </button>
             </div>
           )}

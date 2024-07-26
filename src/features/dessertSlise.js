@@ -11,6 +11,15 @@ export const dessertSlice = createSlice({
   name: "dessert",
   initialState,
   reducers: {
+    deleteOrder: (state, { payload }) => {
+      let item = state.allDesserts.find((dessert) => dessert.id == payload);
+      if (item) {
+        item.amount = 0;
+      }
+      dessertSlice.caseReducers.calculateTotal(state);
+
+    },
+
     addAllDesserts: (state, { payload }) => {
       state.allDesserts = payload;
     },
@@ -52,7 +61,7 @@ export const dessertSlice = createSlice({
   },
 });
 
-export const { clearOrder, decrementOrder, incrementOrder, addAllDesserts } =
+export const { deleteOrder, decrementOrder, incrementOrder, addAllDesserts } =
   dessertSlice.actions;
 
 export default dessertSlice.reducer;

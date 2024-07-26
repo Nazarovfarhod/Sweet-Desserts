@@ -2,6 +2,8 @@
 import { useState } from "react";
 //redux imports
 import { useSelector, useDispatch } from "react-redux";
+import { deleteOrder } from "../features/dessertSlise";
+
 //react icons
 import { TiDeleteOutline } from "react-icons/ti";
 //components
@@ -10,17 +12,22 @@ import Modal from "./Modal";
 const Cart = () => {
   const [oppen, setOppen] = useState(false);
   const dispatch = useDispatch();
-  const { ordered, orderTotal, clearOrder, priceTotal } = useSelector(
+  const { ordered, orderTotal, priceTotal } = useSelector(
     (state) => state.orders
   );
   const handleOppen = () => {
     setOppen(!oppen);
   };
 
+  const handleDelete = (id) => {
+    console.log(id);
+    dispatch(deleteOrder(id));
+  };
+
   return (
     <div className="bg-white relative rounded-2xl lg:w-1/3 p-6">
       <h1 className="text-4xl w-full mb-5 text-[#C73B0F] font-bold">
-        Your Cart ({orderTotal}){" "}
+        Your Cart ({orderTotal})
       </h1>
       {ordered?.map((order) => {
         return (
@@ -31,11 +38,11 @@ const Cart = () => {
             <div>
               <h2>{order.name}</h2>
               <p>
-                {order.amount}x <span>@{order.price.toFixed(2)}$</span>{" "}
+                {order.amount}x <span>@{order.price.toFixed(2)}$</span>
                 <span>${(order.amount * order.price).toFixed(2)}</span>
               </p>
             </div>
-            <button type="button" onClick={clearOrder}>
+            <button type="button" onClick={() => handleDelete(order.id)}>
               <TiDeleteOutline className="w-7 h-7" />
             </button>
             {oppen && <Modal handleOppen={handleOppen} />}
